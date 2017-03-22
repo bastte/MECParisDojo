@@ -20,5 +20,18 @@ namespace BowlingGameKata
         {
             return RollScores.Sum();
         }
+
+        public bool IsSpare()
+        {
+            return RollScores.Count() >= 2
+                && RollScores[0] < 10
+                && RollScores[0] + RollScores[1] == 10;
+        }
+
+        public bool IsStrike()
+        {
+            return RollScores.Count() >= 1
+             && RollScores[0] == 10;
+        }
     }
 }
