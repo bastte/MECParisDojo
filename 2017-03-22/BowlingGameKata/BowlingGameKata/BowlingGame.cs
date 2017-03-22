@@ -8,9 +8,16 @@ namespace BowlingGameKata
 {
     public class BowlingGame
     {
+        private int score;
+        
+        public void Roll(int pin)
+        {
+            score += pin;
+        }
+
         public int Score()
         {
-            return 0;
+            return score;
         }
     }
 }

@@ -16,5 +16,14 @@ namespace BowlingGameKata.UnitTests
             int score = new BowlingGame().Score();
             Assert.AreEqual(0, score);
         }
+
+        [TestMethod]
+        public void RecordFirstRoll()
+        {
+            BowlingGame bowlingGame = new BowlingGame();
+            bowlingGame.Roll(5);
+            int score = bowlingGame.Score();
+            Assert.AreEqual(5, score);
+        }
     }
 }
