@@ -25,5 +25,19 @@ namespace BowlingGameKata.UnitTests
             int score = bowlingGame.Score();
             Assert.AreEqual(5, score);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void RollThrowOnOutOfRangePin()
+        {
+            new BowlingGame().Roll(11);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void RollThrowOnNegativePin()
+        {
+            new BowlingGame().Roll(-1);
+        }
     }
 }

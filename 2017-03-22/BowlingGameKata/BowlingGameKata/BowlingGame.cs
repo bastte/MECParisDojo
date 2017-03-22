@@ -9,9 +9,12 @@ namespace BowlingGameKata
     public class BowlingGame
     {
         private int score;
-        
+
         public void Roll(int pin)
         {
+            if (pin < 0 || pin > 10)
+                throw new ArgumentOutOfRangeException(nameof(pin));
+
             score += pin;
         }
 
