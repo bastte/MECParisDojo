@@ -39,5 +39,14 @@ namespace BowlingGameKata.UnitTests
         {
             new BowlingGame().Roll(-1);
         }
+
+        [TestMethod]
+        public void GetCurrentFrame()
+        {
+            BowlingGame bowlingGame = new BowlingGame();
+            Frame frame = bowlingGame.CurrentFrame();
+            frame.Roll(5);
+            Assert.AreEqual(5, frame.FrameScore());
+        }
     }
 }
