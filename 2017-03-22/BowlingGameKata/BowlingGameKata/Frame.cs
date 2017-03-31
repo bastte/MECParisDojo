@@ -23,27 +23,15 @@ namespace BowlingGameKata
             RollScores.Add(pin);
         }
 
-        public int FrameScore()
-        {
-            return RollScores.Sum();
-        }
+        public int FrameScore => RollScores.Sum();
 
-        public bool IsSpare()
-        {
-            return RollScores.Count() >= 2
+        public bool IsSpare => RollScores.Count() >= 2
                 && RollScores[0] < 10
                 && RollScores[0] + RollScores[1] == 10;
-        }
 
-        public bool IsStrike()
-        {
-            return RollScores.Count() >= 1
+        public bool IsStrike => RollScores.Count() >= 1
              && RollScores[0] == 10;
-        }
 
-        public bool IsFinished()
-        {
-            return RollScores.Count() == 2 || IsStrike();
-        }
+        public bool IsFinished => RollScores.Count() == 2 || IsStrike;
     }
 }

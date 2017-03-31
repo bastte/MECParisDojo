@@ -15,7 +15,7 @@ namespace BowlingGameKata.UnitTests
         {
             Frame frame = new Frame();
             frame.Roll(5);
-            Assert.AreEqual(5, frame.FrameScore());
+            Assert.AreEqual(5, frame.FrameScore);
         }
 
         [TestMethod]
@@ -23,8 +23,8 @@ namespace BowlingGameKata.UnitTests
         {
             Frame frame = new Frame();
             frame.Roll(10);
-            Assert.IsTrue(frame.IsStrike());
-            Assert.IsFalse(frame.IsSpare());
+            Assert.IsTrue(frame.IsStrike);
+            Assert.IsFalse(frame.IsSpare);
         }
 
         [TestMethod]
@@ -33,8 +33,8 @@ namespace BowlingGameKata.UnitTests
             Frame frame = new Frame();
             frame.Roll(1);
             frame.Roll(9);
-            Assert.IsTrue(frame.IsSpare());
-            Assert.IsFalse(frame.IsStrike());
+            Assert.IsTrue(frame.IsSpare);
+            Assert.IsFalse(frame.IsStrike);
         }
 
         [TestMethod]
@@ -52,9 +52,9 @@ namespace BowlingGameKata.UnitTests
         {
             var frame = new Frame();
             frame.Roll(1);
-            Assert.IsFalse(frame.IsFinished());
+            Assert.IsFalse(frame.IsFinished);
             frame.Roll(2);
-            Assert.IsTrue(frame.IsFinished());
+            Assert.IsTrue(frame.IsFinished);
         }
 
         [TestMethod]
@@ -62,7 +62,7 @@ namespace BowlingGameKata.UnitTests
         { 
             var frame = new Frame();
             frame.Roll(10);
-            Assert.IsTrue(frame.IsFinished());
+            Assert.IsTrue(frame.IsFinished);
         }
     }
 }

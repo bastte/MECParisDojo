@@ -8,21 +8,23 @@ namespace BowlingGameKata
 {
     public class BowlingGame
     {
-        private Frame currentFrame = new Frame();
+        IList<Frame> frames = new List<Frame> { new Frame() };
+
+        public int Round => frames.Count;
+
+        public Frame CurrentFrame => frames.Last();
 
         public void Roll(int pin)
         {
-            currentFrame.Roll(pin);
+            if (CurrentFrame.IsFinished)
+                frames.Add(new Frame());
+
+            CurrentFrame.Roll(pin);
         }
 
         public int Score()
         {
-            return currentFrame.FrameScore();
-        }
-
-        public Frame CurrentFrame()
-        {
-            return currentFrame;
+            return CurrentFrame.FrameScore;
         }
     }
 }

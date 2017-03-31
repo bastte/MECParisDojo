@@ -44,8 +44,17 @@ namespace BowlingGameKata.UnitTests
         public void GetCurrentFrame()
         {
             BowlingGame bowlingGame = new BowlingGame();
-            Frame frame = bowlingGame.CurrentFrame();
+            Frame frame = bowlingGame.CurrentFrame;
             Assert.IsNotNull(frame);
+        }
+
+        [TestMethod]
+        public void VerifySeveralRollsCreateSeveralFrames()
+        {
+            var bowlingGame = new BowlingGame();
+            bowlingGame.Roll(1);
+            bowlingGame.Roll(2);
+            Assert.AreEqual(1, bowlingGame.Round);
         }
     }
 }
