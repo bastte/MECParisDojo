@@ -24,7 +24,7 @@ namespace BowlingGameKata
 
         public int Score()
         {
-            return CurrentFrame.FrameScore;
+            return frames.Sum(f => f.FrameScore);
         }
     }
 }

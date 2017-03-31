@@ -11,10 +11,21 @@ namespace BowlingGameKata.UnitTests
     public class BowlingGameShould
     {
         [TestMethod]
-        public void ReturnScore()
+        public void StartWithScoreOfZero()
         {
             int score = new BowlingGame().Score();
             Assert.AreEqual(0, score);
+        }
+
+        [TestMethod]
+        public void UpdateScore()
+        {
+            var bowlingGame = new BowlingGame();
+            for (int i = 0; i < 3; ++i)
+            {
+                bowlingGame.Roll(1);
+            }
+            Assert.AreEqual(3, bowlingGame.Score());
         }
 
         [TestMethod]
