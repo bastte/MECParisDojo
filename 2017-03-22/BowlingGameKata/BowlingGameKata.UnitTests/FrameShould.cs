@@ -36,5 +36,15 @@ namespace BowlingGameKata.UnitTests
             Assert.IsTrue(frame.IsSpare());
             Assert.IsFalse(frame.IsStrike());
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void FrameThrowsIfRolledTooManyTimes()
+        {
+            Frame frame = new Frame();
+            frame.Roll(1);
+            frame.Roll(2);
+            frame.Roll(3);
+        }
     }
 }

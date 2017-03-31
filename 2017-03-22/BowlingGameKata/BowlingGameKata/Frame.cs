@@ -11,7 +11,14 @@ namespace BowlingGameKata
         public void Roll(int pin)
         {
             if (pin < 0 || pin > 10)
+            {
                 throw new ArgumentOutOfRangeException(nameof(pin));
+            }
+
+            if (RollScores.Count >= 2)
+            {
+                throw new InvalidOperationException("You can't roll more than two times per frame");
+            }
 
             RollScores.Add(pin);
         }
