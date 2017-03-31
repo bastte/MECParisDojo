@@ -46,5 +46,23 @@ namespace BowlingGameKata.UnitTests
             frame.Roll(2);
             frame.Roll(3);
         }
+
+        [TestMethod]
+        public void FrameIsFinished()
+        {
+            var frame = new Frame();
+            frame.Roll(1);
+            Assert.IsFalse(frame.IsFinished());
+            frame.Roll(2);
+            Assert.IsTrue(frame.IsFinished());
+        }
+
+        [TestMethod]
+        public void FrameWithStrikeIsFinished()
+        { 
+            var frame = new Frame();
+            frame.Roll(10);
+            Assert.IsTrue(frame.IsFinished());
+        }
     }
 }

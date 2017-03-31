@@ -40,5 +40,10 @@ namespace BowlingGameKata
             return RollScores.Count() >= 1
              && RollScores[0] == 10;
         }
+
+        public bool IsFinished()
+        {
+            return RollScores.Count() == 2 || IsStrike();
+        }
     }
 }
