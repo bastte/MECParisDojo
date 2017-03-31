@@ -65,7 +65,21 @@ namespace BowlingGameKata.UnitTests
             var bowlingGame = new BowlingGame();
             bowlingGame.Roll(1);
             bowlingGame.Roll(2);
-            Assert.AreEqual(1, bowlingGame.Round);
+            bowlingGame.Roll(3);
+            Assert.AreEqual(2, bowlingGame.Round);
+        }
+
+        [TestMethod]
+        public void EndGameAfterLastRound()
+        {
+            var bowlingGame = new BowlingGame();
+            for(int i = 0; i < 20; ++i)
+            {
+                bowlingGame.Roll(2);
+            }
+
+            Assert.IsTrue(bowlingGame.IsFinished);
+            Assert.AreEqual(40, bowlingGame.Score());
         }
     }
 }

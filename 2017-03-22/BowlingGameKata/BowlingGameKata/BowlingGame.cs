@@ -14,6 +14,8 @@ namespace BowlingGameKata
 
         public Frame CurrentFrame => frames.Last();
 
+        public bool IsFinished => frames.Count == 10 && frames.All(frame => frame.IsFinished);
+
         public void Roll(int pin)
         {
             if (CurrentFrame.IsFinished)
