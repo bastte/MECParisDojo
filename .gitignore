@@ -229,3 +229,7 @@ ModelManifest.xml
 
 # Ignore VS Code project files
 **/.vscode
+
+# Ignore built dlls
+Debug/
+Release/
