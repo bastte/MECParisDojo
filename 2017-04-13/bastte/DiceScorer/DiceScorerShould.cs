@@ -46,5 +46,13 @@ namespace DiceScorer
             int score = scorer.Score(new List<int> { 1, 2, 3, 5 });
             Assert.AreEqual(150, score);
         }
+
+        [TestMethod]
+        public void CorrectlyScoreATriple()
+        {
+            var scorer = new DiceScorer();
+            int score = scorer.Score(new List<int> { 1, 1, 1 });
+            Assert.AreEqual(1000, score);
+        }
     }
 }

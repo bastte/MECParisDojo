@@ -36,13 +36,28 @@ namespace DiceScorer
         }
     }
 
+    class TripleScoreDice : ScoreRule
+    {
+        public int Score(List<int> dice)
+        {
+            int score = 0;
+            int count1 = dice.Count(x => x == 1);
+
+            if(count1 == 3)
+            {
+                score += 1000;
+            }
+
+            return score;        }
+    }
+
     class DiceScorer
     {
         public int Score(List<int> dice)
         {
             int score = 0;
 
-            List<ScoreRule> rules = new List<ScoreRule> { new SingleDieScoreRule() };
+            List<ScoreRule> rules = new List<ScoreRule> { new TripleScoreDice(), new SingleDieScoreRule() };
 
             foreach (ScoreRule rule in rules)
             {
