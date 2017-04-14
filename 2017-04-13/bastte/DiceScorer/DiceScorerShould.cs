@@ -16,7 +16,7 @@ namespace DiceScorer
         }
 
         [TestMethod]
-        public void CorrectlyScoreASingleOneDiceWithPoints()
+        public void CorrectlyScoreASingleOneDice()
         {
             var scorer = new DiceScorer();
             int score = scorer.Score(new List<int> { 1 });
@@ -24,7 +24,7 @@ namespace DiceScorer
         }
 
         [TestMethod]
-        public void CorrectlyScoreASingleFiveDiceWithPoints()
+        public void CorrectlyScoreASingleFiveDice()
         {
             var scorer = new DiceScorer();
             int score = scorer.Score(new List<int> { 5 });
@@ -32,7 +32,7 @@ namespace DiceScorer
         }
 
         [TestMethod]
-        public void CorrectlyScoreASingleOneAndASingleFiveDiceWithPoints()
+        public void CorrectlyScoreASingleOneAndASingleFiveDice()
         {
             var scorer = new DiceScorer();
             int score = scorer.Score(new List<int> { 1, 5 });
@@ -40,10 +40,10 @@ namespace DiceScorer
         }
 
         [TestMethod]
-        public void CorrectlyScoreASampleSinglesSequenceWithPoints()
+        public void CorrectlyScoreASampleSinglesSequence()
         {
             var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 1, 2, 3, 5});
+            int score = scorer.Score(new List<int> { 1, 2, 3, 5 });
             Assert.AreEqual(150, score);
         }
     }
