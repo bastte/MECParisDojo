@@ -18,6 +18,8 @@ namespace DiceScorer
         [InlineData(600, new int[] { 6, 6, 6 })]
         [InlineData(1200, new int[] { 6, 6, 6, 6 })]
         [InlineData(2000, new int[] { 1, 1, 1, 1 })]
+        [InlineData(800, new int[] { 1, 1, 2, 2, 3, 3 })]
+        [InlineData(800, new int[] { 1, 2, 3, 3, 2, 1 })]
         public void CorrectlyScore(int expectedScore, int[] dice)
         {
             var scorer = new DiceScorer();
