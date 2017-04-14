@@ -7,6 +7,28 @@
 
     public class ScoreRulesShould
     {
+        [Fact]
+        public void SingleDieScoreRuleRemovesDie()
+        {
+            var rule = new SingleDieScoreRule();
+            var dice = new List<int> { 1, 3, 5, 2 };
 
+            rule.Score(dice);
+
+            Assert.Equal(2, dice.Count);
+            Assert.Equal(3, dice[0]);
+            Assert.Equal(2, dice[1]);
+        }
+
+        [Fact]
+        public void SingleDieScoreRuleCorrectlyScores()
+        {
+            var rule = new SingleDieScoreRule();
+            var dice = new List<int> { 1, 3, 5, 2 };
+
+            int score = rule.Score(dice);
+
+            Assert.Equal(150, score);
+        }
     }
 }
