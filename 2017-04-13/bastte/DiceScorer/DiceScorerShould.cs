@@ -1,58 +1,24 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
 namespace DiceScorer
 {
-    [TestClass]
     public class DiceScorerShould
     {
-        [TestMethod]
-        public void CorrectlyScoreASingleDiceWithNoPoints()
+        [Theory]
+        [InlineData(0, new int[]{3})]
+        [InlineData(100, new int[]{1})]
+        [InlineData(50, new int[]{5})]
+        [InlineData(150, new int[]{1, 5})]
+        [InlineData(150, new int[]{1, 2, 3, 5})]
+        [InlineData(1000, new int[]{1, 1, 1})]
+        public void CorrectlyScore(int expectedScore, int[] dice)
         {
             var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 3 });
-            Assert.AreEqual(0, score);
-        }
-
-        [TestMethod]
-        public void CorrectlyScoreASingleOneDice()
-        {
-            var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 1 });
-            Assert.AreEqual(100, score);
-        }
-
-        [TestMethod]
-        public void CorrectlyScoreASingleFiveDice()
-        {
-            var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 5 });
-            Assert.AreEqual(50, score);
-        }
-
-        [TestMethod]
-        public void CorrectlyScoreASingleOneAndASingleFiveDice()
-        {
-            var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 1, 5 });
-            Assert.AreEqual(150, score);
-        }
-
-        [TestMethod]
-        public void CorrectlyScoreASampleSinglesSequence()
-        {
-            var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 1, 2, 3, 5 });
-            Assert.AreEqual(150, score);
-        }
-
-        [TestMethod]
-        public void CorrectlyScoreATriple()
-        {
-            var scorer = new DiceScorer();
-            int score = scorer.Score(new List<int> { 1, 1, 1 });
-            Assert.AreEqual(1000, score);
+            int score = scorer.Score(dice.ToList());
+            Assert.Equal(expectedScore, score);
         }
     }
 }
