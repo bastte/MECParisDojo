@@ -10,7 +10,9 @@ namespace DiceScorer
     {
         public int Score(List<int> dice)
         {
-            return 0;
+            int count = dice.Count(x => x == 1);
+                
+            return count == 1 ? 100 : 0;
         }
     }
 }

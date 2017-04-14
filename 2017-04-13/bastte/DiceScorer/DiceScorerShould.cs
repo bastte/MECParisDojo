@@ -15,6 +15,12 @@ namespace DiceScorer
             Assert.AreEqual(0, score);
         }
 
-
+        [TestMethod]
+        public void CorrectlyScoreASingleDiceWithPoints()
+        {
+            var scorer = new DiceScorer();
+            int score = scorer.Score(new List<int> { 1 });
+            Assert.AreEqual(100, score);
+        }
     }
 }
