@@ -43,12 +43,30 @@ namespace DiceScorer
             int score = 0;
             int count1 = dice.Count(x => x == 1);
 
-            if(count1 == 3)
+            if (count1 == 3)
             {
                 score += 1000;
+
+                dice.Remove(1);
+                dice.Remove(1);
+                dice.Remove(1);
             }
 
-            return score;        }
+            for (int i = 2; i <= 6; ++i)
+            {
+                int count = dice.Count(x => x == i);
+                if (count == 3)
+                {
+                    score += 100 * i;
+
+                    dice.Remove(i);
+                    dice.Remove(i);
+                    dice.Remove(i);
+                }
+            }
+
+            return score;
+        }
     }
 
     class DiceScorer
