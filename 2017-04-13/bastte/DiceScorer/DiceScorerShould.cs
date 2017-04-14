@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-
-namespace DiceScorer
+﻿namespace DiceScorer
 {
+    using System;
+    using System.Linq;
+    using Xunit;
+
     public class DiceScorerShould
     {
         [Theory]
