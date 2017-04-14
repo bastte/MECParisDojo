@@ -36,32 +36,33 @@ namespace DiceScorer
         }
     }
 
-    class TripleScoreDice : ScoreRule
+    class TripleAndMoreScoreDice : ScoreRule
     {
         public int Score(List<int> dice)
         {
             int score = 0;
             int count1 = dice.Count(x => x == 1);
 
-            if (count1 == 3)
+            if (count1 >= 3)
             {
-                score += 1000;
-
-                dice.Remove(1);
-                dice.Remove(1);
-                dice.Remove(1);
+                score += 1000 << (count1-3);
+                while (count1-- != 0)
+                {
+                    dice.Remove(1);
+                }
             }
 
             for (int i = 2; i <= 6; ++i)
             {
                 int count = dice.Count(x => x == i);
-                if (count == 3)
+                if (count >= 3)
                 {
-                    score += 100 * i;
+                    score += (100 * i) << (count-3);
 
-                    dice.Remove(i);
-                    dice.Remove(i);
-                    dice.Remove(i);
+                    while (count-- != 0)
+                    {
+                        dice.Remove(i);
+                    }
                 }
             }
 
@@ -75,7 +76,7 @@ namespace DiceScorer
         {
             int score = 0;
 
-            List<ScoreRule> rules = new List<ScoreRule> { new TripleScoreDice(), new SingleDieScoreRule() };
+            List<ScoreRule> rules = new List<ScoreRule> { new TripleAndMoreScoreDice(), new SingleDieScoreRule() };
 
             foreach (ScoreRule rule in rules)
             {
