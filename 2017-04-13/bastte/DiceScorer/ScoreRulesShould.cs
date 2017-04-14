@@ -30,5 +30,18 @@
 
             Assert.Equal(150, score);
         }
+
+        [Fact]
+        public void SingleDieScoreRuleShouldIgnoreNonSingleDice()
+        {
+            var rule = new SingleDieScoreRule();
+            var dice = new List<int> { 1, 1, 5 };
+
+            int score = rule.Score(dice);
+
+            Assert.Equal(50, score);
+            Assert.Equal(2, dice.Count);
+            Assert.True(dice.All(x => x == 1));
+        }
     }
 }

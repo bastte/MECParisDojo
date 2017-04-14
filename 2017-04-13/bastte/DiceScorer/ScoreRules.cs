@@ -11,23 +11,24 @@
 
     public class SingleDieScoreRule : ScoreRule
     {
+        private static readonly Dictionary<int, int> _singleDieScore = new Dictionary<int, int>
+        {
+            { 1, 100 },
+            { 5, 50 }
+        };
+
         public int Score(List<int> dice)
         {
             int score = 0;
 
-            int count1 = dice.Count(x => x == 1);
-            int count5 = dice.Count(x => x == 5);
-
-            if (count1 == 1)
+            foreach (var dieThatScores in _singleDieScore)
             {
-                score += 100;
-                dice.Remove(1);
-            }
-
-            if (count5 == 1)
-            {
-                score += 50;
-                dice.Remove(5);
+                int count = dice.Count(x => x == dieThatScores.Key);
+                if (count == 1)
+                {
+                    score += dieThatScores.Value;
+                    dice.Remove(dieThatScores.Key);
+                }
             }
 
             return score;
