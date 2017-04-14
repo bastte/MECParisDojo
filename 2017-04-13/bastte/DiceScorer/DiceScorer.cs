@@ -12,7 +12,7 @@
             _rules = new List<ScoreRule>
             {
                 new PairScoreRule(),
-                new TripleAndMoreScoreDice(),
+                new TripleAndMoreScoreRule(),
                 new SingleDieScoreRule()
             };
         }

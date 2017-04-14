@@ -35,32 +35,31 @@
         }
     }
 
-    public class TripleAndMoreScoreDice : ScoreRule
+    public class TripleAndMoreScoreRule : ScoreRule
     {
+        private static readonly Dictionary<int, int> _tripleDieScore = new Dictionary<int, int>
+        {
+            { 1, 1000 },
+            { 2, 200 },
+            { 3, 300 },
+            { 4, 400 },
+            { 5, 500 },
+            { 6, 600 },
+        };
+
         public int Score(List<int> dice)
         {
             int score = 0;
-            int count1 = dice.Count(x => x == 1);
 
-            if (count1 >= 3)
+            foreach (var dieThatScores in _tripleDieScore)
             {
-                score += 1000 << (count1 - 3);
-                while (count1-- != 0)
-                {
-                    dice.Remove(1);
-                }
-            }
-
-            for (int i = 2; i <= 6; ++i)
-            {
-                int count = dice.Count(x => x == i);
+                int count = dice.Count(x => x == dieThatScores.Key);
                 if (count >= 3)
                 {
-                    score += (100 * i) << (count - 3);
-
+                    score += dieThatScores.Value << (count - 3);
                     while (count-- != 0)
                     {
-                        dice.Remove(i);
+                        dice.Remove(dieThatScores.Key);
                     }
                 }
             }
