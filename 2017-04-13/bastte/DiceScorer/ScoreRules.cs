@@ -68,7 +68,7 @@
         }
     }
 
-    public class PairScoreRule : ScoreRule
+    public class ThreePairsScoreRule : ScoreRule
     {
         public int Score(List<int> dice)
         {
@@ -77,6 +77,7 @@
                 dice.Clear();
                 return 800;
             }
+
             return 0;
         }
     }

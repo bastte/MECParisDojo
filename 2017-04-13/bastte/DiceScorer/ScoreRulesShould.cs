@@ -68,5 +68,41 @@
             Assert.Equal(1300, score);
             Assert.Equal(0, dice.Count);
         }
+
+        [Fact]
+        public void ThreePairsScoreRuleShouldNotAcceptTwoPairs()
+        {
+            var rule = new ThreePairsScoreRule();
+            var dice = new List<int> { 1, 4, 3, 3, 4, 2 };
+
+            int score = rule.Score(dice);
+
+            Assert.Equal(0, score);
+            Assert.Equal(6, dice.Count);
+        }
+
+        [Fact]
+        public void ThreePairsScoreRuleShouldRejectThreePairsOfTheSameValue()
+        {
+            var rule = new ThreePairsScoreRule();
+            var dice = new List<int> { 3, 3, 3, 3, 3, 3 };
+
+            int score = rule.Score(dice);
+
+            Assert.Equal(0, score);
+            Assert.Equal(6, dice.Count);
+        }
+
+        [Fact]
+        public void ThreePairsScoreRuleShouldAcceptThreePairsAndClearDice()
+        {
+            var rule = new ThreePairsScoreRule();
+            var dice = new List<int> { 1, 3, 5, 5, 1, 3 };
+
+            int score = rule.Score(dice);
+
+            Assert.Equal(800, score);
+            Assert.Equal(0, dice.Count);
+        }
     }
 }
