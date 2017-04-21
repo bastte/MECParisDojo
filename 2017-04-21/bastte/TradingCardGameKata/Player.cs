@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TradingCardGameKata
 {
@@ -6,7 +7,8 @@ namespace TradingCardGameKata
     {
         public int ManaSlots { get; }
         public int Health { get; }
-        public List<Card> CardDeck { get;  }
+        public List<Card> CardDeck { get; }
+        public List<Card> Hand { get; }
 
         public Player()
         {
@@ -17,6 +19,8 @@ namespace TradingCardGameKata
             {
                 CardDeck.Add(new Card());
             }
+            Hand = CardDeck.Take(3).ToList();
+            CardDeck = CardDeck.Skip(3).ToList();
         }
     }
 }
