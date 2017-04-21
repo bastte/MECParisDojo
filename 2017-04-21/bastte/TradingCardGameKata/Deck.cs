@@ -5,6 +5,11 @@ namespace TradingCardGameKata
 {
     internal class Deck
     {
+        private static readonly List<int> ManaCosts = new List<int>
+        {
+            0,0,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,7,8
+        };
+
         private readonly Queue<Card> _cards;
 
         public int Count => _cards.Count;
@@ -12,9 +17,9 @@ namespace TradingCardGameKata
         public Deck()
         {
             _cards = new Queue<Card>();
-            for (var i = 0; i < 20; i++)
+            foreach(int manaCost in ManaCosts)
             {
-                _cards.Enqueue(new Card(0));
+                _cards.Enqueue(new Card(manaCost));
             }
         }
 
