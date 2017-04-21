@@ -40,6 +40,15 @@ namespace TradingCardGameKata
             }
 
             Assert.Equal(0, cards.Count);
+        } 
+
+        [Fact]
+        public void BeShuffledAtStart()
+        {
+            var firstDeck = new Deck();
+            var sndDeck = new Deck();
+            Assert.True(firstDeck.Equals(firstDeck));
+            Assert.False(firstDeck.Equals(sndDeck));
         }
     }
 }
