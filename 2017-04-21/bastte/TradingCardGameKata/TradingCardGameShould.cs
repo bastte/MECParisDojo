@@ -6,9 +6,10 @@ namespace TradingCardGameKata
     public class TradingCardGameShould
     {
         [Fact]
-        public void Fail()
+        public void PlayerStartsWithNoManaSlots()
         {
-            Assert.True(false);
+            var player = new Player();
+            Assert.Equal(0, player.ManaSlots);
         }
     }
 }
