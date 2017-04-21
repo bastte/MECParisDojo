@@ -14,7 +14,7 @@ namespace TradingCardGameKata
             _cards = new Queue<Card>();
             for (var i = 0; i < 20; i++)
             {
-                _cards.Enqueue(new Card());
+                _cards.Enqueue(new Card(0));
             }
         }
 
