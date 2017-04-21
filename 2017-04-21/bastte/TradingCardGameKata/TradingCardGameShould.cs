@@ -18,5 +18,12 @@ namespace TradingCardGameKata
             var player = new Player();
             Assert.Equal(30, player.Health);
         }
+
+        [Fact]
+        public void PlayerHasInitialDeckOf20Cards()
+        {
+            var player = new Player();
+            Assert.Equal(20, player.CardDeck.Count);
+        }
     }
 }
