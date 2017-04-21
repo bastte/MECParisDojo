@@ -3,34 +3,32 @@ namespace TradingCardGameKata
     using System;
     using Xunit;
 
-    public class TradingCardGameShould
+    public class PlayerShould
     {
+        private readonly Player _player = new Player();
+
         [Fact]
         public void PlayerStartsWithNoManaSlots()
         {
-            var player = new Player();
-            Assert.Equal(0, player.ManaSlots);
+            Assert.Equal(0, _player.ManaSlots);
         }
 
         [Fact]
         public void PlayerStarsWith30Health()
         {
-            var player = new Player();
-            Assert.Equal(30, player.Health);
+            Assert.Equal(30, _player.Health);
         }
 
         [Fact]
         public void PlayerHasInitialDeckOf20Cards()
         {
-            var player = new Player();
-            Assert.Equal(17, player.CardDeck.Count);
+            Assert.Equal(17, _player.CardDeck.Count);
         }
 
         [Fact]
         public void PlayerHasInitialHandOf3Cards()
         {
-            var player = new Player();
-            Assert.Equal(3, player.Hand.Count);
+            Assert.Equal(3, _player.Hand.Count);
         }
     }
 }
