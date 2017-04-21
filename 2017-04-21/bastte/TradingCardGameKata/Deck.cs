@@ -1,20 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TradingCardGameKata
 {
     internal class Deck
     {
-        private readonly List<Card> _cards;
+        private readonly Queue<Card> _cards;
 
         public int Count => _cards.Count;
 
         public Deck()
         {
-            _cards = new List<Card>();
+            _cards = new Queue<Card>();
             for (var i = 0; i < 20; i++)
             {
-                _cards.Add(new Card());
+                _cards.Enqueue(new Card());
             }
+        }
+
+        public Card Draw()
+        {
+            return _cards.Dequeue();
         }
     }
 }

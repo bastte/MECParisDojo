@@ -14,5 +14,12 @@ namespace TradingCardGameKata
         {
             Assert.Equal(20, _deck.Count);
         }
+
+        [Fact]
+        public void CanDrawCards()
+        {
+            _deck.Draw();
+            Assert.Equal(19, _deck.Count);
+        }
     }
 }
