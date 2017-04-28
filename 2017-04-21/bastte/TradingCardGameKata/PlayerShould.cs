@@ -1,6 +1,7 @@
 namespace TradingCardGameKata
 {
     using System;
+    using System.Linq;
     using Xunit;
 
     public class PlayerShould
@@ -56,6 +57,15 @@ namespace TradingCardGameKata
             _player.SpendMana(1);
             _player.OnRoundStarted();
             Assert.Equal(4, _player.ManaAvailable);
+        }
+
+        [Fact]
+        public void PlayerDrawsRandomCardFromHisDeck()
+        {
+            var previousCards = _player.CardDeck.ToList();
+            Card card = _player.Draw();
+            Assert.Equal(card, previousCards.Except(_player.CardDeck).First());
+            //Assert.Equal(previousCards.OrderBy(c => c.ManaCost), _player.CardDeck.Concat(new[] { card }).OrderBy(c => c.ManaCost));
         }
     }
 }

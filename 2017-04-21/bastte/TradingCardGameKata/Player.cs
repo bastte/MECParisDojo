@@ -36,5 +36,12 @@ namespace TradingCardGameKata
         {
             _pool.Spend(amount);
         }
+
+        internal Card Draw()
+        {
+            var card = CardDeck.Draw();
+            Hand.Add(card);
+            return card;
+        }
     }
 }
