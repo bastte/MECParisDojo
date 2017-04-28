@@ -6,13 +6,16 @@ namespace TradingCardGameKata
 {
     public class ManaPool
     {
+        private const int MaxCapacity = 10;
         public int Capacity { get; private set; }
         public int Count { get; private set; }
 
         public void Add()
         {
-            Capacity++;
-            Count++;
+            if (Capacity < MaxCapacity)
+            {
+                Capacity++;
+            }
         }
 
         public void Spend(int amount)
