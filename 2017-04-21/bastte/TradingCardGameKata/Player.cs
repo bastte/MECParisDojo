@@ -6,14 +6,17 @@ namespace TradingCardGameKata
 {
     internal class Player
     {
-        public int ManaSlots { get; private set; }
+        private ManaPool _pool;
         public int Health { get; }
         public Deck CardDeck { get; }
         public List<Card> Hand { get; }
 
+        public int ManaSlots => _pool.Capacity;
+        public int ManaAvailable => _pool.Count;
+
         public Player()
         {
-            ManaSlots = 0;
+            _pool = new ManaPool();
             Health = 30;
             CardDeck = new Deck();
             Hand = new List<Card>();
@@ -25,7 +28,13 @@ namespace TradingCardGameKata
 
         public void OnRoundStarted()
         {
-            ManaSlots += 1;
+            _pool.Add();
+            _pool.Refill();
+        }
+
+        internal void SpendMana(int amount)
+        {
+            _pool.Spend(amount);
         }
     }
 }

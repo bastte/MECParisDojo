@@ -38,5 +38,24 @@ namespace TradingCardGameKata
             _player.OnRoundStarted();
             Assert.Equal(1, _player.ManaSlots);
         }
+
+        [Fact]
+        public void PlayerSlotsAreRefilledAtTheBeginningOfTheRound()
+        {
+            // All slots are full
+            _player.OnRoundStarted();
+            _player.OnRoundStarted();
+            Assert.Equal(2, _player.ManaAvailable);
+
+            // All Slots are empty
+            _player.SpendMana(2);
+            _player.OnRoundStarted();
+            Assert.Equal(3, _player.ManaAvailable);
+
+            // Some Slots are empty
+            _player.SpendMana(1);
+            _player.OnRoundStarted();
+            Assert.Equal(4, _player.ManaAvailable);
+        }
     }
 }
