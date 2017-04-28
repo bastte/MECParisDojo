@@ -63,9 +63,23 @@ namespace TradingCardGameKata
         public void PlayerDrawsRandomCardFromHisDeck()
         {
             var previousCards = _player.CardDeck.ToList();
-            Card card = _player.Draw();
-            Assert.Equal(card, previousCards.Except(_player.CardDeck).First());
-            //Assert.Equal(previousCards.OrderBy(c => c.ManaCost), _player.CardDeck.Concat(new[] { card }).OrderBy(c => c.ManaCost));
+            var previousHand = _player.Hand.ToArray();
+
+            _player.Draw();
+
+            var deck = _player.CardDeck;
+            var hand = _player.Hand;
+
+            Assert.Equal(hand.Except(previousHand).First(), previousCards.Except(deck).First());
+        }
+
+        [Fact]
+        public void PlayerLosesHealthWhenDeckIsEmpty()
+        {
+            _player.CardDeck.DrawAllCards();
+            Assert.Equal(30, _player.Health);
+            _player.Draw();
+            Assert.Equal(29, _player.Health);
         }
     }
 }

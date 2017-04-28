@@ -7,7 +7,7 @@ namespace TradingCardGameKata
     internal class Player
     {
         private ManaPool _pool;
-        public int Health { get; }
+        public int Health { get; private set; }
         public Deck CardDeck { get; }
         public List<Card> Hand { get; }
 
@@ -22,7 +22,7 @@ namespace TradingCardGameKata
             Hand = new List<Card>();
             for (var i = 0; i < 3; i++)
             {
-                Hand.Add(CardDeck.Draw());
+                Hand.Add(CardDeck.DrawForTests());
             }
         }
 
@@ -37,11 +37,16 @@ namespace TradingCardGameKata
             _pool.Spend(amount);
         }
 
-        internal Card Draw()
+        internal void Draw()
         {
-            var card = CardDeck.Draw();
-            Hand.Add(card);
-            return card;
+            if (CardDeck.TryDraw(out var card))
+            {
+                Hand.Add(card);
+            }
+            else
+            {
+                Health--;
+            }
         }
     }
 }

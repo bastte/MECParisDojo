@@ -19,7 +19,7 @@ namespace TradingCardGameKata
         [Fact]
         public void CanDrawCards()
         {
-            _deck.Draw();
+            Assert.True(_deck.TryDraw(out Card card));
             Assert.Equal(19, _deck.Count);
         }
 
@@ -31,7 +31,7 @@ namespace TradingCardGameKata
                 0,0,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,7,8
             };
 
-            List<Card> cards = Enumerable.Range(1, 20).Select(i => _deck.Draw()).ToList();
+            List<Card> cards = Enumerable.Range(1, 20).Select(i => _deck.DrawForTests()).ToList();
 
             foreach(int expectedValue in expectedValues)
             {
@@ -49,6 +49,24 @@ namespace TradingCardGameKata
             var sndDeck = new Deck();
             Assert.True(firstDeck.Equals(firstDeck));
             Assert.False(firstDeck.Equals(sndDeck));
+        }
+    }
+
+    internal static class DeckExtensions
+    {
+        public static Card DrawForTests(this Deck deck)
+        {
+            Assert.True(deck.TryDraw(out var c));
+            return c;
+        }
+
+        public static void DrawAllCards(this Deck deck)
+        {
+            int count = deck.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                deck.DrawForTests();
+            }
         }
     }
 }

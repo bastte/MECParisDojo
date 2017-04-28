@@ -26,12 +26,18 @@ namespace TradingCardGameKata
             }
         }
 
-        public Card Draw()
+        public bool TryDraw(out Card card)
         {
+            if (!_cards.Any())
+            {
+                card = null;
+                return false;
+            }
+
             int indexToGet = new Random().Next(0, _cards.Count);
-            Card card = _cards[indexToGet];
+            card = _cards[indexToGet];
             _cards.RemoveAt(indexToGet);
-            return card;
+            return true;
         }
 
         public override bool Equals(object obj)
