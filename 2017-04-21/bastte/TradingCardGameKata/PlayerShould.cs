@@ -30,5 +30,13 @@ namespace TradingCardGameKata
         {
             Assert.Equal(3, _player.Hand.Count);
         }
+
+        [Fact]
+        public void PlayerReceivesOneManaSlotAtTheBeginningOfTheRound()
+        {
+            Assert.Equal(0, _player.ManaSlots);
+            _player.OnRoundStarted();
+            Assert.Equal(1, _player.ManaSlots);
+        }
     }
 }

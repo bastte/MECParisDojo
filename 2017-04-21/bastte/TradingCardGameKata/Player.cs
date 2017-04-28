@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TradingCardGameKata
 {
     internal class Player
     {
-        public int ManaSlots { get; }
+        public int ManaSlots { get; private set; }
         public int Health { get; }
         public Deck CardDeck { get; }
         public List<Card> Hand { get; }
@@ -20,6 +21,11 @@ namespace TradingCardGameKata
             {
                 Hand.Add(CardDeck.Draw());
             }
+        }
+
+        public void OnRoundStarted()
+        {
+            ManaSlots += 1;
         }
     }
 }
